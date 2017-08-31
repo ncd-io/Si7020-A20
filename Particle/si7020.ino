@@ -14,7 +14,7 @@ void setup() {
 int last_read = 0;
 void loop() {
     int now = millis();
-    if(now-last_read > 2000){
+    if(now-last_read > 1000){
         last_read = now;
         sensor.takeReading();
     }
