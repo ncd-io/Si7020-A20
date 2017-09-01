@@ -9,6 +9,7 @@ void setup() {
     Particle.variable("temperature", sensor.temperature);
     Particle.variable("humidity", sensor.humidity);
     Particle.function("getTemp", getTemp);
+    Particle.function("heater", controlHeater);
 }
 
 int last_read = 0;
@@ -19,6 +20,10 @@ void loop() {
         sensor.takeReading();
     }
     
+}
+
+int controlHeater(String state){
+    sensor.setHeater(state.equalsIgnoreCase("on"));
 }
 
 int getTemp(String scale){
