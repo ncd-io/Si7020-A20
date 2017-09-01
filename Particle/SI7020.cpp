@@ -6,6 +6,7 @@ SI7020::SI7020(){}
 
 void SI7020::init(){
     Wire.begin();
+    setHeater(false);
 }
 
 void SI7020::takeReading(){
@@ -49,4 +50,12 @@ double SI7020::getTempK(){
 
 double SI7020::getTempF(){
     return getTempC() * 1.8 + 32;
+}
+
+void SI7020::setHeater(bool on){
+    int heaterState = on ? 0x3E : 0x3A;
+    Wire.beginTransmission(address);
+    Wire.write(0xE6);
+    Wire.write(heaterState);
+    Wire.endTransmission();
 }
