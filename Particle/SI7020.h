@@ -19,4 +19,6 @@ public:
     double getTempK();
     double getTempC();
     double getTempF();
+    
+    void setHeater(bool on);
 };
