@@ -1,17 +1,17 @@
 // This #include statement was automatically added by the Particle IDE.
 #include "SI7020.h"
 
-SI7020 sensor;
+SI7020 Sensor;
 
 void setup() {
-    sensor.scale=TEMP_FAHRENHEIT;
-    sensor.heater_status = SI7020_HEATER_ENABLED;
-    sensor.heater_level = 12;
-    sensor.init();
-    Particle.variable("temperature", sensor.temperature);
-    Particle.variable("humidity", sensor.humidity);
+    Sensor.scale=SI7020_TEMP_FAHRENHEIT;
+    Sensor.heater_status = SI7020_HEATER_ENABLED;
+    Sensor.heater_level = 12;
+    Sensor.init();
+    Particle.variable("temperature", Sensor.temperature);
+    Particle.variable("humidity", Sensor.humidity);
 }
 
 void loop() {
-    sensor.takeReading();
+    Sensor.takeReading();
 }
