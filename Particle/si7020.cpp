@@ -1,6 +1,6 @@
 #include "SI7020.h"
-#include "spark_wiring_usbserial.h"
 #include "Particle.h"
+#include "math.h"
 
 void SI7020::init(){
     begin();
@@ -43,10 +43,15 @@ void SI7020::takeReading(){
     
     temperature = ((175.72*temp_code)/65536)-46.85;
     
+    float dp_code = (log(humidity / 100) + ((17.27 * temperature) / (237.3 + temperature))) / 17.27;
+    dew_point = (237.3 * dp_code) / (1-dp_code);
+    
     if(scale == SI7020_TEMP_FAHRENHEIT){
         temperature = temperature * 1.8 + 32;
+        dew_point = dew_point * 1.8 + 32;
     }else if(scale == SI7020_TEMP_KELVIN){
         temperature += 273.15;
+        dew_point += 273.15;
     }
 }
 
