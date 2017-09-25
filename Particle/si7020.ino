@@ -4,37 +4,14 @@
 SI7020 sensor;
 
 void setup() {
-    sensor.scale="f";
+    sensor.scale=TEMP_FAHRENHEIT;
+    sensor.heater_status = SI7020_HEATER_ENABLED;
+    sensor.heater_level = 12;
     sensor.init();
     Particle.variable("temperature", sensor.temperature);
     Particle.variable("humidity", sensor.humidity);
-    Particle.function("getTemp", getTemp);
-    Particle.function("heater", controlHeater);
 }
 
-int last_read = 0;
 void loop() {
-    int now = millis();
-    if(now-last_read > 1000){
-        last_read = now;
-        sensor.takeReading();
-    }
-    
-}
-
-int controlHeater(String state){
-    sensor.setHeater(state.equalsIgnoreCase("on"));
-}
-
-int getTemp(String scale){
-    if(scale.equalsIgnoreCase("f")){
-        return sensor.getTempF();
-    }
-    if(scale.equalsIgnoreCase("c")){
-        return sensor.getTempC();
-    }
-    if(scale.equalsIgnoreCase("k")){
-        return sensor.getTempK();
-    }
-    return 0;
+    sensor.takeReading();
 }
