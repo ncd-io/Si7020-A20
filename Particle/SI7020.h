@@ -10,6 +10,7 @@
 #define SI7020_RES_RH10_TMP_13 0x80 // 10.7
 #define SI7020_RES_RH11_TMP11 0x81 // 9.4
 
+#define SI7020_HEATER_DISABLED 0x00
 #define SI7020_HEATER_ENABLED 0x04
 
 #define SI7020_CONFIG_RSVD 0x3A
@@ -29,9 +30,9 @@
 
 #define SI7020_HEATER_RESERVED 0xF0
 
-#define TEMP_CELSIUS 0x00
-#define TEMP_FAHRENHEIT 0x01
-#define TEMP_KELVIN 0x02
+#define SI7020_TEMP_CELSIUS 0x00
+#define SI7020_TEMP_FAHRENHEIT 0x01
+#define SI7020_TEMP_KELVIN 0x02
 
 class SI7020{
 public:
@@ -40,19 +41,20 @@ public:
     void init();
     
     int hold_mode = SI7020_HOLD_MODE;
-    int reading_waiting = 0;
-    int getDelay();
     
     int resolution = SI7020_RES_RH12_TMP14;
     int heater_status = 0;
     int heater_level = 0;
     
-    int scale = TEMP_CELSIUS;
+    int scale = SI7020_TEMP_CELSIUS;
     double humidity;
     double temperature;
     
     void takeReading();
 private:
+    int reading_waiting = 0;
+    int getDelay();
+    
     void begin();
     void writeByte(int reg, int data);
     int readByte(int reg);
