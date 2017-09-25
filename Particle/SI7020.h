@@ -47,8 +47,10 @@ public:
     int heater_level = 0;
     
     int scale = SI7020_TEMP_CELSIUS;
+    
     double humidity;
     double temperature;
+    double dew_point;
     
     void takeReading();
 private:
