@@ -43,9 +43,9 @@ void SI7020::takeReading(){
     
     temperature = ((175.72*temp_code)/65536)-46.85;
     
-    if(scale == TEMP_FAHRENHEIT){
+    if(scale == SI7020_TEMP_FAHRENHEIT){
         temperature = temperature * 1.8 + 32;
-    }else if(scale == TEMP_KELVIN){
+    }else if(scale == SI7020_TEMP_KELVIN){
         temperature += 273.15;
     }
 }
