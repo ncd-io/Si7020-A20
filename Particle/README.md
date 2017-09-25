@@ -23,26 +23,19 @@ double humidity = Sensor.humidity;
 double temperature = Sensor.temperature;
 ```
 
->Temperature values can be read in Celsius, Fahrenheit, or Kelvin using the provided methods
-```cpp
-double tempK = Sensor.getTempK();
-double tempC = Sensor.getTempC();
-double tempF = Sensor.getTempF();
-```
-
->Turn the internal heater on or off
+>Turn the internal heater on or off, init() must be called after this
 ```cpp
 //turn on
-Sensor.setHeater(true);
+Sensor.heater_status = SI7020_HEATER_ENABLED;
 //turn off
-Sensor.setHeater(false);
+Sensor.heater_status = SI7020_HEATER_DISABLED;
 ```
 
 >The scale used for the temperature property can be set at any time, but defaults to celsius
 ```cpp
 //set to fahrenheit
-Sensor.scale="f";
+Sensor.scale=TEMP_FAHRENHEIT;
 //set to celsius
-Sensor.scale="c";
+Sensor.scale=TEMP_CELSIUS;
 //set to kelvin
-Sensor.scale="k";
+Sensor.scale=TEMP_KELVIN;
