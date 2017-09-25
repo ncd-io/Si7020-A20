@@ -10,6 +10,7 @@ void setup() {
     Sensor.init();
     Particle.variable("temperature", Sensor.temperature);
     Particle.variable("humidity", Sensor.humidity);
+    Particle.variable("dew_point", Sensor.dew_point);
 }
 
 void loop() {
