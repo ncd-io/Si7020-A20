@@ -1,6 +1,6 @@
 # Usage
 
-This library provides a class for reading the temperature and humidity from the Si7020-A20. The si7020.ino file provides a simple use case for the Psrticle cloud.
+This library provides a class for reading the temperature and humidity from the Si7020-A20. The si7020.ino file provides a simple use case for the Particle cloud.
 
 >Create a new instance of the sensor
 ```cpp
@@ -48,6 +48,7 @@ Sensor.takeReading();
 ```cpp
 double humidity = Sensor.humidity;
 double temperature = Sensor.temperature;
+double temperature = Sensor.dew_point;
 ```
 
 >The scale used for the temperature property can be set at any time (defaults to celsius)
