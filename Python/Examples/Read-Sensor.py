@@ -13,21 +13,21 @@ si7020_a20 = SI7020_A20(bus, kwargs)
 
 while True:
     #get the himidity and the temperature in celsius
-    sensor_data = si7020_a20.take_reading('celsius')
+    sensor_data = si7020_a20.get_readings('celsius')
     print '---celsius and rh---'
     print str(sensor_data['temperature'])
     print str(sensor_data['humidity'])
     print ''
     
     #get the himidity and the temperature in fahrenheit
-    sensor_data = si7020_a20.take_reading('fahrenheit')
+    sensor_data = si7020_a20.get_readings('fahrenheit')
     print '---fahrenheit and rh---'
     print str(sensor_data['temperature'])
     print str(sensor_data['humidity'])
     print ''
     
-    #calls to take_reading without a specified unit of measurement are processed as celsius by default
-    sensor_data = si7020_a20.take_reading()
+    #calls to get_readings without a specified unit of measurement are processed as celsius by default
+    sensor_data = si7020_a20.get_readings()
     print '---celsius and rh---'
     print str(sensor_data['temperature'])
     print str(sensor_data['humidity'])
