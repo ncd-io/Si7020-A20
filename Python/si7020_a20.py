@@ -25,7 +25,7 @@ class SI7020_A20():
             self.address = SI7020_A20_DEFAULT_ADDRESS
         self.smbus = smbus
 
-    def take_reading(self, temperature_measurement = 'celsius'):
+    def get_readings(self, temperature_measurement = 'celsius'):
 
         humidity = self.get_humidity()
         temperature = self.get_temperature(temperature_measurement)
